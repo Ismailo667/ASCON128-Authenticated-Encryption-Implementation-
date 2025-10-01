@@ -1,0 +1,8 @@
+# Simulation files
+*.vcd
+*.wlf
+*.log
+*.tmp
+
+# ModelSim work directory
+/work/
