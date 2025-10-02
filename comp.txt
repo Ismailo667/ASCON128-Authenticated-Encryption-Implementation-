@@ -1,0 +1,44 @@
+# Remove existing librairies
+#vdel -lib LIB_RTL -all
+#vdel -lib LIB_BENCH -all
+
+# Build librairies
+vlib LIB/LIB_RTL
+vmap LIB_RTL LIB/LIB_RTL
+vlib LIB/LIB_BENCH
+vmap LIB_BENCH LIB/LIB_BENCH
+
+
+# Compile all RTL sources
+vlog -sv +acc -svinputport=net -work LIB_RTL ./SRC/RTL/ascon_pack.sv
+vlog -sv +acc -svinputport=net -work LIB_RTL ./SRC/RTL/constant_addition.sv
+vlog -sv +acc -svinputport=net -work LIB_RTL ./SRC/RTL/sbox.sv
+vlog -sv +acc -svinputport=net -work LIB_RTL ./SRC/RTL/sbox_layer.sv
+vlog -sv +acc -svinputport=net -work LIB_RTL ./SRC/RTL/diffusion_layer.sv
+vlog -sv +acc -svinputport=net -work LIB_RTL ./SRC/RTL/mux_state.sv
+vlog -sv +acc -svinputport=net -work LIB_RTL ./SRC/RTL/xor_begin_perm.sv
+vlog -sv +acc -svinputport=net -work LIB_RTL ./SRC/RTL/xor_end_perm.sv
+vlog -sv +acc -svinputport=net -work LIB_RTL ./SRC/RTL/state_register_w_en.sv
+vlog -sv +acc -svinputport=net -work LIB_RTL ./SRC/RTL/register_w_en.sv
+vlog -sv +acc -svinputport=net -work LIB_RTL ./SRC/RTL/compteur_simple_init.sv
+vlog -sv +acc -svinputport=net -work LIB_RTL ./SRC/RTL/compteur_double_init.sv
+vlog -sv +acc -svinputport=net -work LIB_RTL ./SRC/RTL/permutation.sv
+vlog -sv +acc -svinputport=net -work LIB_RTL ./SRC/RTL/fsm_hajar.sv
+vlog -sv +acc -svinputport=net -work LIB_RTL ./SRC/RTL/ascon_top.sv
+
+# Compile all BENCH sources
+vlog -sv +acc -svinputport=net -work LIB_BENCH -L LIB_RTL SRC/BENCH/constant_addition_tb.sv
+vlog -sv +acc -svinputport=net -work LIB_BENCH -L LIB_RTL SRC/BENCH/sbox_tb.sv
+vlog -sv +acc -svinputport=net -work LIB_BENCH -L LIB_RTL SRC/BENCH/sbox_layer_tb.sv
+vlog -sv +acc -svinputport=net -work LIB_BENCH -L LIB_RTL SRC/BENCH/diffusion_layer_tb.sv
+vlog -sv +acc -svinputport=net -work LIB_BENCH -L LIB_RTL SRC/BENCH/permutation_tb.sv
+vlog -sv +acc -svinputport=net -work LIB_BENCH -L LIB_RTL SRC/BENCH/ascon_top_tb.sv
+
+# Simulation
+# /!\ Uncomment only one vsim command below
+#vsim -L LIB_RTL LIB_BENCH.constant_addition_tb
+#vsim -L LIB_RTL LIB_BENCH.sbox_tb
+#vsim -L LIB_RTL LIB_BENCH.sbox_layer_tb
+#vsim -L LIB_RTL LIB_BENCH.diffusion_layer_tb
+#vsim -L LIB_RTL LIB_BENCH.permutation_tb
+vsim -L LIB_RTL LIB_BENCH.ascon_top_tb
