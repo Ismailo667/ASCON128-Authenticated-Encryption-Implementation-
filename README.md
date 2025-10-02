@@ -44,7 +44,7 @@ The complete ASCON128 circuit is composed of:
 - Registers for holding intermediate states, ciphertext, and authentication tags.  
 
 ### 2.2 Code Structure
-
+'''
 ASCON/
 ├── SRC/
 │ ├── RTL/ → SystemVerilog modules (permutation, S-box, diffusion, FSM, …)
@@ -53,7 +53,7 @@ ASCON/
 │ ├── LIBRTL → Source library for compilation
 │ └── LIBBENCH → Test library for compilation
 └── compil_ascon.txt → ModelSim compilation script
-
+'''
 
 A dedicated library `asconpack` defines the 320-bit internal state **S**, split into 5 registers of 64 bits each.
 
