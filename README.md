@@ -44,7 +44,7 @@ The complete ASCON128 circuit is composed of:
 - Registers for holding intermediate states, ciphertext, and authentication tags.  
 
 ### 2.2 Code Structure
-<pre> ```markdown ASCON/
+<pre> ``` ASCON/
   ├── SRC/ 
   │ ├── RTL/ → SystemVerilog modules (permutation, S-box, diffusion, FSM, …)
   │ └── BENCH/ → Testbenches for verification
