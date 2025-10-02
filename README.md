@@ -37,6 +37,8 @@ The objective of this project was to design and implement the **ASCON128 encrypt
 ## 2. Project Architecture
 
 ### 2.1 Structure and Components
+<img width="661" height="330" alt="image" src="https://github.com/user-attachments/assets/20dbde94-32ac-47bb-8bb2-757d74c3176a" />
+
 The complete ASCON128 circuit is composed of:
 - A **Finite State Machine (FSM)** controlling the encryption process.  
 - A **Permutation & XOR block** implementing pC, pS, pL transformations and XOR operations.  
@@ -73,6 +75,8 @@ Applies bitwise rotations and mixing to spread dependencies across state registe
 ---
 
 ## 4. Development of Permutations p⁶ and p¹²
+<img width="650" height="167" alt="image" src="https://github.com/user-attachments/assets/6c891b79-21ec-49c4-a059-7d934caa0bc8" />
+
 
 The permutation module integrates **pC, pS, and pL** transformations with XOR operations.  
 Additional registers are used for storing the intermediate state, ciphertext blocks, and authentication tag.  
